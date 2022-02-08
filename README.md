@@ -1,1 +1,1 @@
-# study-planner-backend
+# planner-back-efnet
