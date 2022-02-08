@@ -1,10 +1,13 @@
+using System;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 using System.Threading.Tasks;
 
 using planner_web_api.Application.ViewModels;
 using planner_web_api.Application.InputModels;
 using planner_web_api.Application.Interfaces;
+using backend.Application.UseCases.Projects;
+
 
 
 namespace planner_web_api.Controllers
@@ -14,10 +17,13 @@ namespace planner_web_api.Controllers
     public class ProjectController : ControllerBase
     {
         private IProjectService projectService;
+        private IManageProjects _manageProject;
 
-        public ProjectController(IProjectService projectService)
+
+        public ProjectController(IProjectService projectService, IManageProjects manageProject)
         {
             this.projectService = projectService;
+            this._manageProject = manageProject;
         }
 
         [HttpGet]
@@ -33,6 +39,14 @@ namespace planner_web_api.Controllers
             var newProject = await projectService.InsertProject(project);
 
             return newProject;
+        }
+
+        [HttpDelete("{projectId:int}")]        
+        public async Task<IActionResult> DeleteProject(int projectId)
+        {
+            await _manageProject.DeleteProject(projectId);
+
+            return Ok("Deletado");
         }
 
        
