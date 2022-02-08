@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,6 +29,19 @@ namespace planner_web_api.Infrastructure.Repositories
             context.Project.Add(project);
             await context.SaveChangesAsync();
             return project;
+        }
+
+        public async Task<Project> GetProject(int projectId) 
+        {
+            Project project = await this.context.Project.FirstOrDefaultAsync( project => project.Id == projectId);
+
+            return project;
+        }
+
+        public async Task Delete(Project project) 
+        {
+            this.context.Project.Remove(project);
+            context.SaveChanges();
         }
     }
 }

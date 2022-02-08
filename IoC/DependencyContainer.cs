@@ -6,6 +6,8 @@ using planner_web_api.Application.Interfaces;
 using planner_web_api.Infrastructure.Interfaces;
 using planner_web_api.Infrastructure.Repositories;
 
+using backend.Application.UseCases.Projects;
+
 namespace planner_web_api.IoC
 {
     public class DependencyContainer
@@ -13,6 +15,8 @@ namespace planner_web_api.IoC
         public static void RegisterServices(IServiceCollection services){
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IManageProjects, ManageProject>();
+
         }
     }
 }

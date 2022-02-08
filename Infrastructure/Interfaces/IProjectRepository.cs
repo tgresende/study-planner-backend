@@ -9,6 +9,10 @@ namespace planner_web_api.Infrastructure.Interfaces
         Task<IEnumerable<Project>> GetProjects();
 
         Task<Project> InsertProject(Project proj);
+        
+        Task Delete(Project project);
+        Task<Project> GetProject(int projectId);
+
 
     }
 }
