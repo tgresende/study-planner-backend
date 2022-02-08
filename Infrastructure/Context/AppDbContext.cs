@@ -19,10 +19,18 @@ namespace planner_web_api.Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
+                .Entity<Project>()
+                .HasMany(e => e.Subjects)
+                .WithOne(e => e.project);
+
+            modelBuilder
                 .Entity<Subject>()
                 .HasOne(e => e.project)
                 .WithMany(e => e.Subjects)
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
+
+             
+                
         }
     }
 }   
