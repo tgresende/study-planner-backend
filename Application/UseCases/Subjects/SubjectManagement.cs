@@ -30,11 +30,7 @@ namespace backend.Application.UseCases.Subjects
             return await _subjectService.GetSubjects(projectId);
         }
 
-        public async Task<Subject> InsertSubject(Subject subject)
-        {
-            return await _subjectRepository.InsertSubject(subject);
-        }
-
+      
         public async Task<Subject> GetSubject(int subjectId)
         {
             return await _subjectRepository.GetSubject(subjectId);

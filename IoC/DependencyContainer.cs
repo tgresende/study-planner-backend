@@ -8,6 +8,8 @@ using planner_web_api.Infrastructure.Repositories;
 
 using backend.Application.UseCases.Projects;
 using backend.Application.UseCases.Subjects;
+using backend.Application.UseCases.Subjects.InsertNewSubject;
+
 
 namespace planner_web_api.IoC
 {
@@ -21,6 +23,8 @@ namespace planner_web_api.IoC
             services.AddScoped<ISubjectRepository, SubjectRepository>();
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<ISubjectManagement, SubjectManagement>();
+            services.AddScoped<IInsertNewSubject, InsertNewSubject>();
+
 
         }
     }

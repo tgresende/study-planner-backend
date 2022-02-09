@@ -10,7 +10,6 @@ namespace backend.Application.UseCases.Subjects
     public interface ISubjectManagement
     {
         Task<List<GetSubjectsResponseModel>> GetSubjects(int projectId);
-        Task<Subject> InsertSubject(Subject subject);
         Task<Subject> GetSubject(int subjectId);
         Task DeleteSubject(int subjectId);
     }

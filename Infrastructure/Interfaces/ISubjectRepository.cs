@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
 using backend.Domain.entities;
-using planner_web_api.Domain.entities;
 using backend.Domain.ResponseModels.Subjects;
+using planner_web_api.Domain.entities;
 
 
 using System.Threading.Tasks;

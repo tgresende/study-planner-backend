@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 using backend.Application.UseCases.Subjects;
+using backend.Application.UseCases.Subjects.InsertNewSubject;
+
 
 using backend.Domain.ResponseModels.Subjects;
 using backend.Domain.entities;
@@ -15,11 +17,12 @@ namespace planner_web_api.Controllers
     public class SubjectController : ControllerBase
     {
         private ISubjectManagement _manageSubject;
+        private IInsertNewSubject _insertSubject;
 
-
-        public SubjectController(ISubjectManagement manageSubject)
+        public SubjectController(ISubjectManagement manageSubject, IInsertNewSubject insertSubject)
         {
             this._manageSubject = manageSubject;
+            this._insertSubject = insertSubject;
         }
 
         [HttpGet("{projectId:int}")]        
@@ -30,10 +33,14 @@ namespace planner_web_api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Subject>> InsertSubject([FromBody] Subject subject)
+        public async Task<ActionResult<InsertNewSubjectRequestModel>> InsertSubject([FromBody] InsertNewSubjectRequestModel subject)
         {
-            var newSubject = await _manageSubject.InsertSubject(subject);
-            return newSubject;
+            var newSubject = await _insertSubject.InsertSubject(subject);
+
+            if (newSubject != null)
+                return Ok(newSubject);
+            
+            return BadRequest();
         }
 
         [HttpDelete("{subjectId:int}")]        
