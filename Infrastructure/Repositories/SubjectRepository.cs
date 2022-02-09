@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -8,6 +9,9 @@ using planner_web_api.Infrastructure.Interfaces;
 using planner_web_api.Infrastructure.Context;
 
 using backend.Domain.entities;
+using backend.Domain.ResponseModels.Subjects;
+using planner_web_api.Domain.entities;
+
 
 namespace planner_web_api.Infrastructure.Repositories
 {
@@ -19,9 +23,14 @@ namespace planner_web_api.Infrastructure.Repositories
             this.context = context;
         }
 
-        public async Task<IEnumerable<Subject>> GetSubjects() 
+        public async Task<List<GetSubjectsResponseModel>> GetSubjects(Project project) 
         {
-            return await context.Subject.ToListAsync();
+            return await this.context.Subject
+                .Where( sub => sub.project == project)
+                .Select(sub => new GetSubjectsResponseModel{
+                    SubjectId = sub.SubjectId,
+                    Name = sub.Name
+                }).ToListAsync();
         }
 
         public async Task<Subject> InsertSubject(Subject subject) 
@@ -38,8 +47,11 @@ namespace planner_web_api.Infrastructure.Repositories
             return subject;
         }
 
-        public async Task Delete(Subject subject) 
+        public async Task Delete(int subjectId) 
         {
+            Subject subject = await this.context.Subject
+                .FirstOrDefaultAsync( subject => subject.SubjectId == subjectId);
+
             this.context.Subject.Remove(subject);
             context.SaveChanges();
         }

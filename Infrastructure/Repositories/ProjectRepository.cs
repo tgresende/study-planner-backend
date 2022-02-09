@@ -34,7 +34,6 @@ namespace planner_web_api.Infrastructure.Repositories
         public async Task<Project> GetProject(int projectId) 
         {
             Project project = await this.context.Project.FirstOrDefaultAsync( project => project.Id == projectId);
-
             return project;
         }
 

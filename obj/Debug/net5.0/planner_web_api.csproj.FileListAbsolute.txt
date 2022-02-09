@@ -68,3 +68,7 @@
 /Users/mac/Desktop/estudo/app/backend/obj/Debug/net5.0/ref/planner_web_api.dll
 /Users/mac/Desktop/estudo/app/backend/obj/Debug/net5.0/planner_web_api.pdb
 /Users/mac/Desktop/estudo/app/backend/obj/Debug/net5.0/planner_web_api.genruntimeconfig.cache
+/Users/mac/Desktop/estudo/app/backend/bin/Debug/net5.0/Microsoft.AspNetCore.JsonPatch.dll
+/Users/mac/Desktop/estudo/app/backend/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/mac/Desktop/estudo/app/backend/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/mac/Desktop/estudo/app/backend/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll

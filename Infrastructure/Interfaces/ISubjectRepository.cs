@@ -1,15 +1,19 @@
 using System.Collections.Generic;
+
 using backend.Domain.entities;
+using planner_web_api.Domain.entities;
+using backend.Domain.ResponseModels.Subjects;
+
+
 using System.Threading.Tasks;
 
 namespace planner_web_api.Infrastructure.Interfaces
 {
     public interface ISubjectRepository
     {
-        Task<IEnumerable<Subject>> GetSubjects();
+        Task<List<GetSubjectsResponseModel>> GetSubjects(Project project);
         Task<Subject> InsertSubject(Subject subject);
-        Task Delete(Subject subject);
+        Task Delete(int SubjectId);
         Task<Subject> GetSubject(int SubjectId);
-
     }
 }

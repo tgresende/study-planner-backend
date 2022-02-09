@@ -7,6 +7,7 @@ using planner_web_api.Infrastructure.Interfaces;
 using planner_web_api.Infrastructure.Repositories;
 
 using backend.Application.UseCases.Projects;
+using backend.Application.UseCases.Subjects;
 
 namespace planner_web_api.IoC
 {
@@ -16,6 +17,10 @@ namespace planner_web_api.IoC
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IManageProjects, ManageProject>();
+
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectManagement, SubjectManagement>();
 
         }
     }
